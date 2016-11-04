@@ -12,7 +12,8 @@ $.widget('riddlemd.scrollLocker', {
                     .scrollLeft($currentWidget.lockParams.left);
             }
         });
-
+    },
+    _init : function() {
         if(this.options.autoLock) {
             this.lock();
         }
@@ -27,10 +28,13 @@ $.widget('riddlemd.scrollLocker', {
         this.lockParams = null;
     },
     toggle : function() {
-        if(this.lockedParams) {
+        if(this.lockParams) {
             this.unlock();
         } else {
             this.lock();
         }
+    },
+    isLocked : function() {
+        return this.lockParams != null;
     }
 });
